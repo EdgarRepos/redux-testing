@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Headline from "./Headline";
-import PropTypes, { checkPropTypes } from "prop-types";
 
 import { findByTestAtrribute } from "../../../utils/index";
 
