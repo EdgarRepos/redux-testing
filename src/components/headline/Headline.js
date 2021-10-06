@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function Headline({ header, description }) {
 
@@ -12,6 +13,17 @@ function Headline({ header, description }) {
       <p data-test="description">{description}</p>
     </div>
   )
+}
+
+Headline.propTypes = {
+  header: PropTypes.string,
+  description: PropTypes.string,
+  tempArray: PropTypes.arrayOf(PropTypes.shape({
+    fName: PropTypes.string,
+    lName: PropTypes.string,
+    age: PropTypes.number,
+    online: PropTypes.bool
+  }))
 }
 
 export default Headline;
