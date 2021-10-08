@@ -6,6 +6,7 @@ import React from 'react';
 function setUp(initialState = {}) {
   const store = testStore(initialState);
   const wrapper = shallow(<App store={store} />).childAt(0).dive();
+  console.log(wrapper.debug());
   return wrapper;
 }
 
@@ -31,5 +32,5 @@ describe('App Component', () => {
   it('Should render without errors', () => {
     const component = findByTestAtrribute(wrapper, 'app-component');
     expect(component.length).toBe(1);
-  })
-})
+  });
+});

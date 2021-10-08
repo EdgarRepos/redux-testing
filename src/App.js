@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/header";
 import Headline from "./components/headline/Headline";
-import ShareButton from "./components/button";
 import ListItem from "./components/listItem";
 import { connect } from 'react-redux';
 import { fetchPosts } from './actions';
 import './app.scss';
+import SharedButton from "./components/button";
+
 
 const dataArray = [{
   fName: "Pancho",
@@ -15,9 +16,15 @@ const dataArray = [{
 }]
 
 function App({ fetchPosts, posts}) {
+  const [hideBtn, setHideBtn] = useState(false);
+
+  function exampleMethod_updatesState() {
+    setHideBtn(prevhideBtn => !prevhideBtn);
+  }
 
   function fetch() {
     fetchPosts();
+    exampleMethod_updatesState();
   }
 
   const configButton = {
@@ -30,7 +37,9 @@ function App({ fetchPosts, posts}) {
       <Header />
       <section className="main">
         <Headline header="Posts" description="Click the button to render post" tempArray={dataArray}/>
-        <ShareButton {...configButton} />
+        {!hideBtn &&
+          <SharedButton {...configButton} />
+        }
         {posts.length > 0 &&
           <div>
             {posts.map((post, index) => {
